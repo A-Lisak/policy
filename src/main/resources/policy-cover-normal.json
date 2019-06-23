@@ -1,0 +1,1074 @@
+{
+  "policyCoverNo": 421,
+  "policyholderNo": 421,
+  "policyNo": 45381820,
+  "parentPolicyCoverNo": 421,
+  "policySeqNo": 102905171,
+  "cancelCode": 0,
+  "expiryCode": 1,
+  "paymentFrequency": 1,
+  "policyStatus": "P",
+  "cancelDate": null,
+  "coverChangedDate": "2017-03-05T00:00:00Z",
+  "coverEndDate": "2017-03-05T00:00:00Z",
+  "coverKnownFromDate": "2016-03-05T00:00:00Z",
+  "coverStartDate": "2017-03-10",
+  "renewalDate": "2017-03-05T00:00:00Z",
+  "text1": "",
+  "text2": "Midterm Adjustment",
+  "text4": "",
+  "ageCalcDate": null,
+  "responseType": 1,
+  "meansPayNo": 23307543,
+  "instlPlanType": 2,
+  "policyYear": 1,
+  "firstStartDate": "2016-03-05T00:00:00Z",
+  "referToUnderwriter": null,
+  "markNo": 8201,
+  "yearStartDate": "2016-03-05T00:00:00Z",
+  "quoteExpiryDate": "2016-03-05T23:59:59Z",
+  "transactionType": "M",
+  "installmentMethod": 1,
+  "accountNo": 8701587,
+  "paymentMethod": "CARD",
+  "centerCode": "EM",
+  "mtaAdjustmentReason": "",
+  "webReferenceNo": "1160160663",
+  "sourceClonePolicyNo": "",
+  "homeCrossSellIqFlag": "",
+  "memberGetMemberToken": "",
+  "coverStartTime": "1731",
+  "coverEndTime": "1200",
+  "depositPayMethod": "",
+  "depMeansPayNo": null,
+  "kuCampaignCode": "",
+  "kuSchemeCode": "D007",
+  "ncdFlag": "Y",
+  "ddiFlag": "N",
+  "polFlag": "N",
+  "ncdRcvdDate": null,
+  "ddiRcvdDate": null,
+  "polRcvdDate": null,
+  "prevInsurer": "",
+  "ncdRate": "",
+  "ncdBonus": "",
+  "certStatus": "",
+  "certDate": null,
+  "verbalNcd": "N",
+  "amnestyFlag": "",
+  "amnestyDate": null,
+  "deferredReview": null,
+  "ncdUserId": "",
+  "ddiUserId": "",
+  "polUserId": "",
+  "certUserId": "",
+  "ncdUserName": "",
+  "ddiUserName": "",
+  "polUserame": "",
+  "certUserName": "",
+  "interimReferralRuleset": "ku",
+  "underwriterId": "ES",
+  "esPriceTestLevel": 50,
+  "faPriceTestLevel": null,
+  "callCentreOffer": "",
+  "cpaOptout": "Y",
+  "cpaOptoutUser": "IBIS",
+  "cpaOptoutTimestamp": "2016-03-04T15:39:19Z",
+  "cpaOptoutReason": "PH_NOT_CH",
+  "preferredPayMethod": 1,
+  "responseCode": "I002",
+  "unbatchNcdDate": null,
+  "unbatchUserId": "",
+  "unbatchUserName": "",
+  "renewalAcceptedInd": "X",
+  "multiPolicyGroupId": null,
+  "aggregatorId": "CTM",
+  "liveStartDate": "2016-03-05T00:00:00Z",
+  "liveRenewalDate": "2017-03-05T00:00:00Z",
+  "poFactor": 1,
+  "bankAccountDetail": {
+    "bankAccountDetailNo": 142,
+    "policyCoverNo": 402,
+    "meansPayNo": 23307558,
+    "accountHolderName": "Bob Smith",
+    "bankSortCode": "801370",
+    "bankAccount": "06980365",
+    "ddiType": "PLD",
+    "collectionDay": 5,
+    "sendToBacs": "N",
+    "cancelCode": 0
+  },
+  "coverLines": [
+    {
+      "coverLineNo": 421,
+      "agrLineNo": 109009503,
+      "agrLineSeqNo": 256415759,
+      "cancelCode": 0,
+      "coverKnownFromDate": "2016-03-05T00:00:00Z",
+      "discountType": "N",
+      "productLineId": "EMMOT",
+      "productLineVerNo": 303,
+      "agrLineCreateCode": null,
+      "cancelDate": null,
+      "coverChangedDate": "2017-03-05T00:00:00Z",
+      "coverEndDate": "2017-03-05T00:00:00Z",
+      "coverStartDate": "2016-03-05T00:00:00Z",
+      "firstQuoteDate": "2016-03-01T00:00:00Z",
+      "firstQuoteHour": 11,
+      "lastQuoteHour": 11,
+      "discPct": null,
+      "ncYears": null,
+      "ncdYears": 5,
+      "pricePaid": 213.33,
+      "tariffPrice": 213.33,
+      "text4": "",
+      "priceFlatPaid": null,
+      "tariffFlat": null,
+      "status": "OK",
+      "sectionNo": 1,
+      "transCode": 10,
+      "referToUnderwriter": null,
+      "proRataFactor": 1,
+      "transactionCost": null,
+      "productTax1": null,
+      "productTax2": null,
+      "currencyCode": "GBP",
+      "centerCode": "EM",
+      "shortDesc": "Driver/Vehicle Details",
+      "temporaryInsurance": "N",
+      "floorsCeilingInd": "",
+      "highestRatedDriverType": "M",
+      "highestRatedDriverNo": "186944542",
+      "discountAmount": "",
+      "riskPremium": null,
+      "ratePremium": 873.3058,
+      "conversionEstimate": null,
+      "floorCeilingProposedChange": null,
+      "floorCeilingCappedChange": null,
+      "depositAmt": 0,
+      "premRateCode": "",
+      "comBatchNo": null,
+      "renewalDiscountRate": 19482,
+      "renewalDiscountIpt": 1851,
+      "ratesetId": 18721,
+      "priceLevel": "",
+      "addonYear": null,
+      "freeAddon": "",
+      "overrideRatesetId": null,
+      "multiway": 12,
+      "loyaltyCode": null,
+      "postcodeSegment": 12,
+      "genFactorCount": 49,
+      "genFactorKeyCount": 3,
+      "sucSeqNo": 256440095,
+      "coveredVehicle": {
+        "coveredVehicleNo": 301,
+        "vehicleType": "M",
+        "vehicleObjectNo": 57184126,
+        "vehicleRegNo": "ABC123",
+        "vehicleDetailId": 33943,
+        "mileage": 10500,
+        "overnightLocation": "GRG",
+        "daytimeLocation": "NR",
+        "securityDevice": "N2",
+        "riskPostcodeIn": "0SG",
+        "riskPostcodeOut": "RH2",
+        "carValue": 4999,
+        "carValueType": "",
+        "dateOfPurchase": "2010-03-04T00:00:00Z",
+        "dateOfRegistration": "2004-01-30T00:00:00Z",
+        "carGroup": "28",
+        "carColour": "W",
+        "carSpecificAdXs": 0,
+        "carSpecificTheftXs": 250,
+        "colourSegment": 98,
+        "carType": "Saloon",
+        "vehicleMake": "FORD",
+        "vehicleModel": "FIESTA FINESSE 16V",
+        "modification1": "175",
+        "modification2": null,
+        "modification3": null,
+        "modification4": null,
+        "modification5": null,
+        "modification6": null
+      },
+      "coveredDrivers": [
+        {
+          "coveredDriverNo": 361,
+          "driverType": "M",
+          "driverObjectNo": 57184127,
+          "title": "MR",
+          "forename": "Msm",
+          "surname": "New-Surname",
+          "fullName": "Msm Tester",
+          "gender": "M",
+          "maritalStatus": 3,
+          "relationToPolicyholder": "SPO",
+          "dateOfBirth": "1972-02-02T00:00:00Z",
+          "occupation": "*23",
+          "licenceType": "UK",
+          "licenceRestriction": "8",
+          "yearsLicenceHeld": "2002-02-02T00:00:00Z",
+          "yearsInUk": "1973-01-01T00:00:00Z",
+          "driveOtherCarsInd": "No",
+          "driverSpecificXs": 0,
+          "occupationSegment": null,
+          "youngestDriver": "Yes",
+          "policyholderDriver": "No",
+          "driverScore": 0.9299,
+          "ncdLevel": 5,
+          "coverType": "COM",
+          "streetNo": "1",
+          "street": "Blendon Path",
+          "postalTown": "Bromley",
+          "city": "",
+          "county": "Kent",
+          "postcodeIn": "0SG",
+          "postcodeOut": "RH2",
+          "classOfUse": "C1",
+          "drivingRestrictions": "I+S",
+          "ncdDiscount": 70,
+          "ncdProtection": "YES",
+          "staffIndicator": "",
+          "introductoryNcd": "No",
+          "proofOfNcd": "No",
+          "carOwner": "PRO",
+          "registeredKeeper": "PRO",
+          "proposerDriverInd": "No",
+          "numberOfCars": null,
+          "introNcdYears": null,
+          "introNcdPct": null,
+          "ibisQuoteChannel": "Y",
+          "ibisSchemeCode": "",
+          "loadDiscReason": "",
+          "marketPlus": "",
+          "ladyDriver": "N",
+          "handbagCover": "",
+          "voluntaryExcess": 250,
+          "useOfOtherCars": 1,
+          "carsInHousehold": 1,
+          "noOfChildren": 2,
+          "residentialStatus": 1,
+          "compulsoryExcess": 0,
+          "fireExcess": 100,
+          "theftExcess": 250,
+          "windscreenExcess": 100,
+          "applicableExcess": 250,
+          "appXsDateTime": "2016-03-05T00:01:00Z",
+          "uwLoad": 0,
+          "uwLoadEffectiveDate": null,
+          "uwAdExcess": 0,
+          "iceEquipment": "A",
+          "previousInsuranceName": "",
+          "personalAccident": "A",
+          "personalEffects": "A",
+          "previousInsuranceExpiry": null,
+          "medicalExpenses": "C",
+          "previousInsurancePolNo": "",
+          "previousInsuranceNcd": null,
+          "drivingOtherVehExp": "NDR",
+          "drivingOtherVehExpYrs": "5+",
+          "employmentStatus": "EMP",
+          "industryCode": "841",
+          "secondaryOccupationYn": "Y",
+          "secondaryOccupation": "52",
+          "driverClaims": null,
+          "driverConvictions": [
+            {
+              "driverConvictionNo": 241,
+              "driverConvictionSeqNo": 5533137,
+              "convictionCode": "SP30",
+              "penaltyPoints": 3,
+              "dateOfConviction": "2013-02-02T00:00:00Z",
+              "licenseSuspensionInd": "No",
+              "suspensionPeriod": 0,
+              "pendingActualInd": "No"
+            }
+          ],
+          "driverMedicalRestrictions": null
+        },
+        {
+          "coveredDriverNo": 361,
+          "driverType": "M",
+          "driverObjectNo": 57184127,
+          "title": "MR",
+          "forename": "Msm",
+          "surname": "Tester",
+          "fullName": "Msm Tester",
+          "gender": "M",
+          "maritalStatus": 3,
+          "relationToPolicyholder": "SPO",
+          "dateOfBirth": "1972-02-02T00:00:00Z",
+          "occupation": "*23",
+          "licenceType": "UK",
+          "licenceRestriction": "8",
+          "yearsLicenceHeld": "2002-02-02T00:00:00Z",
+          "yearsInUk": "1973-01-01T00:00:00Z",
+          "driveOtherCarsInd": "No",
+          "driverSpecificXs": 0,
+          "occupationSegment": null,
+          "youngestDriver": "Yes",
+          "policyholderDriver": "No",
+          "driverScore": 0.9299,
+          "ncdLevel": 5,
+          "coverType": "COM",
+          "streetNo": "1",
+          "street": "Blendon Path",
+          "postalTown": "Bromley",
+          "city": "",
+          "county": "Kent",
+          "postcodeIn": "0SG",
+          "postcodeOut": "RH2",
+          "classOfUse": "C1",
+          "drivingRestrictions": "I+S",
+          "ncdDiscount": 70,
+          "ncdProtection": "YES",
+          "staffIndicator": "",
+          "introductoryNcd": "No",
+          "proofOfNcd": "No",
+          "carOwner": "PRO",
+          "registeredKeeper": "PRO",
+          "proposerDriverInd": "No",
+          "numberOfCars": null,
+          "introNcdYears": null,
+          "introNcdPct": null,
+          "ibisQuoteChannel": "Y",
+          "ibisSchemeCode": "",
+          "loadDiscReason": "",
+          "marketPlus": "",
+          "ladyDriver": "N",
+          "handbagCover": "",
+          "voluntaryExcess": 250,
+          "useOfOtherCars": 1,
+          "carsInHousehold": 1,
+          "noOfChildren": 2,
+          "residentialStatus": 1,
+          "compulsoryExcess": 0,
+          "fireExcess": 100,
+          "theftExcess": 250,
+          "windscreenExcess": 100,
+          "applicableExcess": 250,
+          "appXsDateTime": "2016-03-05T00:01:00Z",
+          "uwLoad": 0,
+          "uwLoadEffectiveDate": null,
+          "uwAdExcess": 0,
+          "iceEquipment": "A",
+          "previousInsuranceName": "",
+          "personalAccident": "A",
+          "personalEffects": "A",
+          "previousInsuranceExpiry": null,
+          "medicalExpenses": "C",
+          "previousInsurancePolNo": "",
+          "previousInsuranceNcd": null,
+          "drivingOtherVehExp": "NDR",
+          "drivingOtherVehExpYrs": "5+",
+          "employmentStatus": "EMP",
+          "industryCode": "841",
+          "secondaryOccupationYn": "Y",
+          "secondaryOccupation": "52",
+          "driverClaims": null,
+          "driverConvictions": [
+            {
+              "driverConvictionNo": 241,
+              "driverConvictionSeqNo": 5533137,
+              "convictionCode": "SP30",
+              "penaltyPoints": 3,
+              "dateOfConviction": "2013-02-02T00:00:00Z",
+              "licenseSuspensionInd": "No",
+              "suspensionPeriod": 0,
+              "pendingActualInd": "No"
+            }
+          ],
+          "driverMedicalRestrictions": [
+            {
+              "driverMedicalRestrictionNo": 41,
+              "coveredDriverNo": 345,
+              "medicalRestrictionSeqNo": 499254,
+              "medicalCondition": "AF",
+              "medicalConditionDesc": "Vertigo"
+            }
+          ]
+        },
+        {
+          "coveredDriverNo": 362,
+          "driverType": "A",
+          "driverObjectNo": 12360705,
+          "title": "MRS",
+          "forename": "Policyholder",
+          "surname": "Notmd",
+          "fullName": "Policyholder Notmd",
+          "gender": "F",
+          "maritalStatus": 1,
+          "relationToPolicyholder": "MAD",
+          "dateOfBirth": "1970-01-01T00:00:00Z",
+          "occupation": "Z21",
+          "licenceType": "UK",
+          "licenceRestriction": "8",
+          "yearsLicenceHeld": "2000-12-01T00:00:00Z",
+          "yearsInUk": "1970-01-01T00:00:00Z",
+          "driveOtherCarsInd": "",
+          "driverSpecificXs": 0,
+          "occupationSegment": null,
+          "youngestDriver": "No",
+          "policyholderDriver": "Yes",
+          "driverScore": 0.8847,
+          "ncdLevel": null,
+          "coverType": null,
+          "streetNo": null,
+          "street": null,
+          "postalTown": null,
+          "city": null,
+          "county": null,
+          "postcodeIn": null,
+          "postcodeOut": null,
+          "classOfUse": null,
+          "drivingRestrictions": null,
+          "ncdDiscount": null,
+          "ncdProtection": null,
+          "staffIndicator": null,
+          "introductoryNcd": null,
+          "proofOfNcd": null,
+          "carOwner": null,
+          "registeredKeeper": null,
+          "proposerDriverInd": "Yes",
+          "numberOfCars": null,
+          "introNcdYears": null,
+          "introNcdPct": null,
+          "ibisQuoteChannel": null,
+          "ibisSchemeCode": null,
+          "loadDiscReason": null,
+          "marketPlus": null,
+          "ladyDriver": null,
+          "handbagCover": null,
+          "voluntaryExcess": null,
+          "useOfOtherCars": null,
+          "carsInHousehold": null,
+          "noOfChildren": null,
+          "residentialStatus": null,
+          "compulsoryExcess": null,
+          "fireExcess": null,
+          "theftExcess": null,
+          "windscreenExcess": null,
+          "applicableExcess": null,
+          "appXsDateTime": null,
+          "uwLoad": null,
+          "uwLoadEffectiveDate": null,
+          "uwAdExcess": null,
+          "iceEquipment": null,
+          "previousInsuranceName": null,
+          "personalAccident": null,
+          "personalEffects": null,
+          "previousInsuranceExpiry": null,
+          "medicalExpenses": null,
+          "previousInsurancePolNo": null,
+          "previousInsuranceNcd": null,
+          "drivingOtherVehExp": null,
+          "drivingOtherVehExpYrs": null,
+          "employmentStatus": "EMP",
+          "industryCode": "841",
+          "secondaryOccupationYn": "Y",
+          "secondaryOccupation": "52",
+          "driverClaims": [
+            {
+              "driverClaimNo": 62,
+              "coveredDriverNo": 345,
+              "prevCurrClaimInd": "P",
+              "claimSeqNo": 4431316,
+              "claimDate": "2013-01-11T00:00:00Z",
+              "claimCause": "FIR",
+              "claimEvent": "",
+              "claimDescription": "",
+              "atFaultInd": "Yes",
+              "atFaultFcInd": "Yes",
+              "outstandingInd": "No",
+              "claimAmount": 1200,
+              "ncdDisallowedInd": "No"
+            }
+          ],
+          "driverConvictions": [
+            {
+              "driverConvictionNo": 242,
+              "driverConvictionSeqNo": 5533136,
+              "convictionCode": "SP30",
+              "penaltyPoints": 3,
+              "dateOfConviction": "2012-02-02T00:00:00Z",
+              "licenseSuspensionInd": "No",
+              "suspensionPeriod": 0,
+              "pendingActualInd": "No"
+            }
+          ],
+          "driverMedicalRestrictions": null
+        }
+      ],
+      "coverLineRiskSplits": [
+        {
+          "coverLineRiskSplitNo": 381,
+          "riskNo": 1,
+          "factor": 0.913233019265926
+        },
+        {
+          "coverLineRiskSplitNo": 382,
+          "riskNo": 19,
+          "factor": 0.08676698073407398
+        },
+        {
+          "coverLineRiskSplitNo": 383,
+          "riskNo": 20,
+          "factor": 0
+        }
+      ],
+      "coverLinePremiumAdjustments": [
+        {
+          "coverLinePremiumAdjNo": 341,
+          "transactionGroupingId": 301,
+          "amt": 213.33,
+          "requestStatus": "Y",
+          "transCode": 10,
+          "stampDuty": null,
+          "transactionCost": null,
+          "productTax1": null,
+          "productTax2": null,
+          "proRataAmt": 213.33,
+          "commissionEntitledAmt": 213.33,
+          "currencyCode": "GBP",
+          "localAmt": 213.33
+        },
+        {
+          "coverLinePremiumAdjNo": 342,
+          "transactionGroupingId": 301,
+          "amt": -213.33,
+          "requestStatus": "Y",
+          "transCode": 10,
+          "stampDuty": null,
+          "transactionCost": null,
+          "productTax1": null,
+          "productTax2": null,
+          "proRataAmt": -213.33,
+          "commissionEntitledAmt": -213.33,
+          "currencyCode": "GBP",
+          "localAmt": -213.33
+        }
+      ],
+      "coverLineSiraValues": [
+        {
+          "coverLineSiraValueNo": null,
+          "createdBy": null,
+          "createdDate": null,
+          "modifiedBy": null,
+          "modifiedDate": null,
+          "siraCode": "1",
+          "siraValue": ""
+        },
+        {
+          "coverLineSiraValueNo": null,
+          "createdBy": null,
+          "createdDate": null,
+          "modifiedBy": null,
+          "modifiedDate": null,
+          "siraCode": "2",
+          "siraValue": ""
+        },
+        {
+          "coverLineSiraValueNo": null,
+          "createdBy": null,
+          "createdDate": null,
+          "modifiedBy": null,
+          "modifiedDate": null,
+          "siraCode": "3",
+          "siraValue": ""
+        },
+        {
+          "coverLineSiraValueNo": null,
+          "createdBy": null,
+          "createdDate": null,
+          "modifiedBy": null,
+          "modifiedDate": null,
+          "siraCode": "4",
+          "siraValue": ""
+        },
+        {
+          "coverLineSiraValueNo": null,
+          "createdBy": null,
+          "createdDate": null,
+          "modifiedBy": null,
+          "modifiedDate": null,
+          "siraCode": "5",
+          "siraValue": ""
+        },
+        {
+          "coverLineSiraValueNo": null,
+          "createdBy": null,
+          "createdDate": null,
+          "modifiedBy": null,
+          "modifiedDate": null,
+          "siraCode": "6",
+          "siraValue": ""
+        }
+      ],
+      "coverLineGenericFactors": [
+        {
+          "factorId": "1",
+          "factorKey1": "17",
+          "factorKey2": "1",
+          "factorKey3": "10"
+        },
+        {
+          "factorId": "2",
+          "factorKey1": "17",
+          "factorKey2": "1",
+          "factorKey3": "10"
+        },
+        {
+          "factorId": "3",
+          "factorKey1": "29",
+          "factorKey2": "1",
+          "factorKey3": "10"
+        },
+        {
+          "factorId": "4",
+          "factorKey1": "2",
+          "factorKey2": "5",
+          "factorKey3": "9"
+        },
+        {
+          "factorId": "5",
+          "factorKey1": "30",
+          "factorKey2": "1",
+          "factorKey3": "1"
+        },
+        {
+          "factorId": "6",
+          "factorKey1": "11",
+          "factorKey2": "2",
+          "factorKey3": "10"
+        },
+        {
+          "factorId": "7",
+          "factorKey1": "30",
+          "factorKey2": "2",
+          "factorKey3": "8"
+        },
+        {
+          "factorId": "8",
+          "factorKey1": "30",
+          "factorKey2": "1",
+          "factorKey3": "9"
+        },
+        {
+          "factorId": "9",
+          "factorKey1": "20",
+          "factorKey2": "1",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "10",
+          "factorKey1": "20",
+          "factorKey2": "1",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "11",
+          "factorKey1": "8",
+          "factorKey2": "1",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "12",
+          "factorKey1": "20",
+          "factorKey2": "5",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "13",
+          "factorKey1": "20",
+          "factorKey2": "5",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "14",
+          "factorKey1": "20",
+          "factorKey2": "5",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "15",
+          "factorKey1": "44",
+          "factorKey2": "5",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "16",
+          "factorKey1": "28",
+          "factorKey2": "3",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "17",
+          "factorKey1": "100",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "18",
+          "factorKey1": "100",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "19",
+          "factorKey1": "100",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "20",
+          "factorKey1": "100",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "21",
+          "factorKey1": "100",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "22",
+          "factorKey1": "96",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "23",
+          "factorKey1": "10",
+          "factorKey2": "1",
+          "factorKey3": "10"
+        },
+        {
+          "factorId": "24",
+          "factorKey1": "17",
+          "factorKey2": "11",
+          "factorKey3": "5"
+        },
+        {
+          "factorId": "25",
+          "factorKey1": "17",
+          "factorKey2": "11",
+          "factorKey3": "5"
+        },
+        {
+          "factorId": "26",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "27",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "28",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "29",
+          "factorKey1": "17",
+          "factorKey2": "31",
+          "factorKey3": "6"
+        },
+        {
+          "factorId": "30",
+          "factorKey1": "17",
+          "factorKey2": "1",
+          "factorKey3": "1"
+        },
+        {
+          "factorId": "31",
+          "factorKey1": "17",
+          "factorKey2": "37",
+          "factorKey3": "19"
+        },
+        {
+          "factorId": "32",
+          "factorKey1": "17",
+          "factorKey2": "37",
+          "factorKey3": "19"
+        },
+        {
+          "factorId": "33",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "34",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "35",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "36",
+          "factorKey1": "1",
+          "factorKey2": "1",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "37",
+          "factorKey1": "1",
+          "factorKey2": "1",
+          "factorKey3": "2"
+        },
+        {
+          "factorId": "38",
+          "factorKey1": "4",
+          "factorKey2": "36",
+          "factorKey3": "32"
+        },
+        {
+          "factorId": "39",
+          "factorKey1": "4",
+          "factorKey2": "36",
+          "factorKey3": "32"
+        },
+        {
+          "factorId": "40",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "41",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "42",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "43",
+          "factorKey1": "4",
+          "factorKey2": "1",
+          "factorKey3": "1"
+        },
+        {
+          "factorId": "44",
+          "factorKey1": "17",
+          "factorKey2": "30",
+          "factorKey3": "21"
+        },
+        {
+          "factorId": "45",
+          "factorKey1": "17",
+          "factorKey2": "15",
+          "factorKey3": "4"
+        },
+        {
+          "factorId": "46",
+          "factorKey1": "17",
+          "factorKey2": "15",
+          "factorKey3": "4"
+        },
+        {
+          "factorId": "47",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "48",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        },
+        {
+          "factorId": "49",
+          "factorKey1": "",
+          "factorKey2": "",
+          "factorKey3": ""
+        }
+      ],
+      "coverLineRuleVersions": [
+        {
+          "ruleAppName": "uweligibilityruleapp",
+          "ruleAppVersion": "11.0",
+          "variantMarker": ""
+        },
+        {
+          "ruleAppName": "uwmotorratinganalysisruleapp",
+          "ruleAppVersion": "29.0",
+          "variantMarker": ""
+        }
+      ]
+    }
+  ],
+  "availabilityRules": [
+    {
+      "policyAvailabilityNo": 1461,
+      "policyCoverNo": null,
+      "ruleName": "CUSTOMER BARRED",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1462,
+      "policyCoverNo": null,
+      "ruleName": "POLICY IN RENEWAL CYCLE",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1463,
+      "policyCoverNo": null,
+      "ruleName": "LATE NOTIFIED CLAIM",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1464,
+      "policyCoverNo": null,
+      "ruleName": "POLICY NOT YET IN FORCE",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1465,
+      "policyCoverNo": null,
+      "ruleName": "CUSTOMER HAS MULTIPLE PRODUCTS",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1466,
+      "policyCoverNo": null,
+      "ruleName": "CUSTOMER HAS MULTIPLE MOTOR POLICIES",
+      "ruleYn": "Y"
+    },
+    {
+      "policyAvailabilityNo": 1467,
+      "policyCoverNo": null,
+      "ruleName": "POLICY IS HOME POLICY",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1468,
+      "policyCoverNo": null,
+      "ruleName": "OVERDUE BALANCE OUTSTANDING",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1469,
+      "policyCoverNo": null,
+      "ruleName": "UNPROCESSED PRINT REQUEST",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1470,
+      "policyCoverNo": null,
+      "ruleName": "MAILING AND RISK ADDRESS ARE DIFFERENT",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1471,
+      "policyCoverNo": null,
+      "ruleName": "POLICY IN USE",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1472,
+      "policyCoverNo": null,
+      "ruleName": "CUSTOMER NOT MAIN DRIVER",
+      "ruleYn": "Y"
+    },
+    {
+      "policyAvailabilityNo": 1473,
+      "policyCoverNo": null,
+      "ruleName": "LAST MTA ON POLICY FUTURE DATED",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1474,
+      "policyCoverNo": null,
+      "ruleName": "DD WITH NO ACTIVE DDI",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1475,
+      "policyCoverNo": null,
+      "ruleName": "CPA WITH NO ACTIVE CARD",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1476,
+      "policyCoverNo": null,
+      "ruleName": "POSITIVE RENEWAL OFFERED",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1477,
+      "policyCoverNo": null,
+      "ruleName": "POLICY IN REVIEW",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1478,
+      "policyCoverNo": null,
+      "ruleName": "PAYMENT METHOD DD",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1479,
+      "policyCoverNo": null,
+      "ruleName": "PAYMENT METHOD CPA",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1480,
+      "policyCoverNo": null,
+      "ruleName": "CUSTOMER HAS MORE THAN 2 PERM ADDITIONAL DRIVERS",
+      "ruleYn": "N"
+    },
+    {
+      "policyAvailabilityNo": 1481,
+      "policyCoverNo": null,
+      "ruleName": "TEMPORARY SUBSTITUTE VEHICLE IN FORCE",
+      "ruleYn": "N"
+    }
+  ],
+  "policyholder": {
+    "policyholderNo": 421,
+    "nameId": 186944542,
+    "title": "MRS",
+    "forename": "Policyholder",
+    "surname": "New-Policyholder",
+    "streetNo": "1",
+    "houseName": "",
+    "street": "Blendon Path",
+    "postalTown": "Bromley",
+    "city": "",
+    "county": "Kent",
+    "country": "UK",
+    "postArea": "RH2",
+    "postStreet": "0SG",
+    "birthDate": "1970-01-01T00:00:00Z",
+    "occupationCode": "Z21",
+    "occupation": "Food Technologist",
+    "sex": "F",
+    "maritalState": 1,
+    "contactOptInIndicator": "Y",
+    "preferredContactMethod": 13,
+    "eveningTelNo": "01234567890",
+    "daytimeTelNo": "33333333333",
+    "mobileTelNo": "88888888888",
+    "faxNo": "",
+    "email": "abc@wheels.com"
+  }
+}

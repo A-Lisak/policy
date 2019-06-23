@@ -1,0 +1,18 @@
+---
+spring:
+  profiles: componenttest
+  cloud:
+    config:
+      enabled: false
+
+logging:
+  path: ${user.home}
+  level:
+    root: info
+    com.ku.api: debug
+
+oracle-service:
+  host: http://localhost:${wiremock.server.port}
+
+api-key:
+  secret: key

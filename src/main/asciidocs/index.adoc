@@ -1,0 +1,221 @@
+= Motor Policy Service
+v{apiMajorVersion} ({apiVersion}) - ku
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+++++
+<script
+  src="../js/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="../css/font-awesome-5.8.0-web.min.css">
+  <style>
+div#header{
+    max-width:inherit;
+}
+div#header h1{
+    text-align: center;
+}
+pre{
+    display: inline-block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+div#content{
+    max-width:inherit;
+}
+colgroup col{
+    width:inherit;
+}
+table tr:nth-of-type(even) {
+    background: inherit;
+}
+.collapsor{
+    position:absolute;
+}
+.collapsor.fa-minus-square{
+    opacity: .3;
+}
+.collapsor:hover,.collapsor.fa-plus-square{
+    opacity: .5;
+}
+h2 + .collapsor{
+    margin-top: -47px;
+}
+h3 + .collapsor{
+    margin-top: -37px;
+}
+h4 + .collapsor{
+    margin-top: -32px;
+}
+h2,h3,h4{
+    padding-left: 32px;
+}
+h2,h3,h4,.collapsor,table caption{
+    cursor: pointer;
+}
+.sectionbody,.sect3{
+    padding:20px;
+}
+.sect2,.sect3{
+    padding: 10px;
+}
+td pre{
+    min-width:200px;
+    width:400px;
+}
+.collapsor.fa-plus-square + pre {
+    height: 5px;
+    padding: 5px;
+    overflow-y: hidden;
+}
+.collapsor + table caption.title{
+    padding-left:20px;
+    line-height: inherit;
+}
+.collapsor.fa-plus-square + table tbody {
+    display: none;
+}
+</style>
+<script>
+    $(document).ready(function(){
+        var collapsorHtml = '<i class="collapsor fas fa-minus-square"></i>';
+        $('pre,table').before(collapsorHtml);
+        $('h2,.collapsor,table caption').click(function(evt){
+            var $next = $(evt.target).next();
+
+            var evtTgtTagName = $(evt.target).prop('tagName');
+
+            if($next.length>0 && $next.prop('tagName') !== 'TABLE'){
+                var $collapseFrom;
+                if(evtTgtTagName.match('^H[1-4]$')!=null){
+                    $collapseFrom = $(evt.target).next('.collapsor');
+                }else{
+                    $collapseFrom = $(evt.target);
+                }
+                $collapseFrom.nextAll('.sectionbody,.sect3,.sect4,.paragraph,.tableblock,.collapsor').toggle();
+                }
+            var $collapsor = $(evt.target).closest('.collapsor');
+            if($collapsor.length == 0){
+                $collapsor = $(evt.target).nextAll('.collapsor');
+            }
+            if(evtTgtTagName === 'CAPTION'){
+                $collapsor = $(evt.target).parent().prev('.collapsor');
+            }
+            $collapsor.toggleClass('fa-minus-square fa-plus-square');
+});
+        $('.collapsor').click();
+    });
+</script>
+++++
+
+[introduction]
+== Introduction
+The Motor Policy API is a Spring Boot microservice providing HTTP endpoints to retrieve policy cover and, accept an MTA quote.
+
+=== Technologies Used
+Spring Boot - Server to host the Rest API
+
+=== Ports
+9100 Main rest application port
+
+=== URLs
+Currently the API is deployed in AWS environment and available at the below URLs
+[%autowidth]
+|===
+| Environment | URL
+
+|Local | http://localhost:9100/policy/v2/
+|Kong(deve) |https://ops-kong-deve13.escloud.co.uk/policy/v2/
+|Beanstalk(deve) | https://policy-deve.eu-west-1.elasticbeanstalk.com/policy/v2/
+|Swagger(deve) | https://policy-deve.eu-west-1.elasticbeanstalk.com//policy/v2/swagger-ui.html
+|Documentation | https://s3-eu-west-1.amazonaws.com/s3-ec-ext-dev-all-maven.rpt-01/policy/index.html
+|===
+
+=== Service Dependencies
+The service needs to connect to the following services:
+- Oracle Gateway API (Github project api-jva-oraclegateway).
+
+=== Environment Variables
+The following values can be declared as environment variables. The one marked required **must** be declared.
+|===
+| Variable Name       | Required                      | Description                                  | Value                  |
+
+| ENV                 | **true**                      | The name of the environment                  | deve, tste, prep, prod |
+| MODE                | **true**                      | The mode to operate in                       | dev, test, prep, prod  |
+| APP_PORT            | **true**                      | Application Port                             | 80  |
+| CONFIG_FAIL_FAST_FLAG|**true**                      | Whether startup should fail if cannot connect to config server | true |
+| CONFIG_GIT_BRANCH   | **true**                      | Cloud config label indicating Git branch     | master |
+| CONFIG_SERVER_URL   | **true**                      | Cloud config label indicating Git Server URL | https://api-jva-springbootconfig-{dev}.escloud.co.uk |
+| ORACLE_SERVICE_TIMEOUT | **false**                  | Document Access Service Timeout milliseconds | 5000  |
+| API_KEY             | **true**                      | API key (header) used by the service         | XXXXX  |
+| DOMAIN              | **true**                      | Kong gateway domain                          | escloud.co.uk  |
+| ROOT_LOGGING_LEVEL  | **false**                     | Default log level                            | WARN  |
+| ku_LOGGING_LEVEL | **false**                     | ku packages log level                     | INFO  |
+| APP_VERSION         | **true**                      | Application version running                  | 2  |
+| API_GATEWAY_HOST    | **true**                      | Base URL of api gateway                      | https://ops-kong-{deve13}.escloud.co.uk |
+| LOGS_PATH           | **false**                     | Application logs directory                   | /application/logs |
+|===
+
+=== Security
+For authentication we use API key in Kong so we need to pass **apikey** header between our services and also the JWT coming from the UI.
+Because of that we define an API_KEY environment variable got from AWS System Manager (SSM) and it's stored on KMS.
+
+Check -entrypoint.sh- script to understand how is the process to get APY_KEY and set the environment variable.
+
+Api key and values are in the bootstrap.yml file but the key comes from the environment variable.
++++
+<pre>
+api-key:
+  name: apikey
+  secret: ${API_KEY}
+</pre>
++++
+
+=== Logging
+This service uses Logback and Logbook libraries to log application messages and resquests/responses respectively.
+
+==== Logback
+You can find logback configuration in **logback-spring.xml** there you can find two appenders:
+ **ASYNC-APP** will write application logs in console asynchronously.
+  **ASYNC-REQUEST** will write requests and responses logs in request.log file asynchronously and the path is specified in *logging.path* bootstrap property.
+You can find more information about logback here : https://logback.qos.ch/documentation.html
+
+==== Logbook
+This zalando library allows logging requests and responses in a secure and configurable way. You can setup logbook in bootstrap.yml
++++
+<pre>
+ logbook:
+   format.style: json
+   obfuscate:
+     headers:
+       - apikey
+       - JWT
+   write:
+     level: DEBUG
+     category: request-response
+</pre>
++++
+
+You can find more information about logbook here : https://github.com/zalando/logbook
+
+include::{snippets}/controllers/controllers.adoc[]
+
+== Error Codes
+The service could return the following errors. Each error has a code, description and a message to provide additional information about the error. +
+include::{snippets}/errors/errors.adoc[]
+
+== Interfaces
+include::{snippets}/interfaces/interfaces.adoc[]
+
+== Scenarios
+include::{snippets}/scenarios/scenarios.adoc[]

@@ -1,0 +1,23 @@
+/.apt_generated/
+/target/
+/.settings/
+/.factorypath
+/.docker
+/.docker/
+/.idea/
+*.idea
+*.iml
+# Elastic Beanstalk Files
+/.ebxtensions/
+/.elasticbeanstalk/
+.elasticbeanstalk/*
+!.elasticbeanstalk/config.yml
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+bin/**
+
+#Maven wrapper files
+.mvn/timing.properties
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar

@@ -1,0 +1,73 @@
+---
+spring:
+  application:
+    name: ${application.name}
+  profiles:
+    active: ${MODE:local}, ${ENV:local}
+  main:
+    banner-mode: 'off'
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URL:https://api-jva-springbootconfig-dev.escloud.co.uk}
+      failFast: ${CONFIG_FAIL_FAST_FLAG:true}
+      label: ${CONFIG_GIT_BRANCH:master}
+  jackson.serialization.write_dates_as_timestamps: false
+
+server:
+  port: ${APP_PORT:9100}
+  servlet:
+    context-path: /${application.name}/v2
+
+logging:
+  path: ${LOGS_PATH:}
+  level:
+    root: ${ROOT_LOGGING_LEVEL:WARN}
+    com.ku.api: ${ku_LOGGING_LEVEL:INFO}
+
+logbook:
+  exclude:
+    - ${server.servlet.context-path}/actuator/health
+    - ${server.servlet.context-path}/swagger-ui.html
+    - ${server.servlet.context-path}/webjars/**
+    - ${server.servlet.context-path}/swagger-resources/**
+    - ${server.servlet.context-path}/v1/**
+  filter.enabled: true
+  format.style: jsonUtil
+  obfuscate:
+    headers:
+      - apikey
+      - JWT
+  write:
+    level: DEBUG
+    category: request-response
+
+application: 
+  name: policy
+  version: ${APP_VERSION:2}
+  description: Motor Policy API used to get/put policy data from/to TIA
+  license: License Details
+  licenseUrl: http://www.ku.com/licenses/LICENSE-2.0.html
+  termsOfServiceUrl: http://www.ku.com
+  createdBy: ku Api Teamm
+  seeMoreAtApi: xxxxxxxxxx
+  contactTheDeveloper: api-dev@ku.com
+
+oracle-service:
+  host: xxx
+  path: xxx
+
+api-key:
+  name: apikey
+  secret: huy
+
+feign:
+  hystrix:
+    enabled: ${HYSTRIX_ENABLED:false}
+  client:
+    config:
+      oracle-service-feign:
+        loggerLevel: full
+        error-decoder: com.lisak.oraclegateway.OracleGatewayErrorDecoder
+
+
+

@@ -1,0 +1,12 @@
+{
+  "apiVersion": "2.0",
+  "errors": [
+    {
+      "code": "1001",
+      "message": "ORACLE_GATEWAY_DATABASE_SYSTEM_ERROR",
+      "href": null
+    }
+  ],
+  "infos": [],
+  "results": []
+}

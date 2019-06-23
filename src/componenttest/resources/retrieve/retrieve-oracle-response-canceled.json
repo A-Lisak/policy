@@ -1,0 +1,13 @@
+{
+  "apiVersion": "2.0",
+  "errors": null,
+  "infos": null,
+  "results": [
+    {
+      "signature": {
+        "functionName": "API_OWNER.POLICY_DATA_PKG_V3.CREATE_DATA_MODEL_FNC"
+      },
+      "payloadOut": "{\"policyNo\":123456789,\"yearStartDate\":\"2018-01-02T00:00:00Z\",\"renewalDate\":\"2018-12-31T00:00:00Z\",\"coverLines\":[{\"coverLineNo\":36129264,\"cancelCode\":17,\"tariffPrice\":100.00},{\"coverLineNo\":36129265,\"cancelCode\":17,\"tariffPrice\":100.00}]}"
+    }
+  ]
+}

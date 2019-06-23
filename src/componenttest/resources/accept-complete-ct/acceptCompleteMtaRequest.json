@@ -1,0 +1,41 @@
+{
+  "paymentDetails": {
+    "paymentMethod": "CARD", 
+    "status": "", 
+    "ddPaymentPlan": null,
+    "cardPayment":{
+      "isPolicyHolderCard" : true,
+      "policyHolderUserID": "",
+      "policyHolderCardStamp" : "",
+      "meansPayNo" : "",
+      "nameIdNo": "",
+      "accountHolderName" : "",
+      "paymentChannel" : "", 
+      "ccNo": "",
+      "expiryMonth": "",
+      "expiryYear" : "",
+      "timeStamp" : "",
+      "pspCardType" : "",
+      "cardType" : "" ,
+      "cscCaptureDate" : "",
+      "issuingBank" : "",
+      "countryOfIssue" : "",
+      "caReference": "",
+      "pspReference" : "",
+      "authCode" : "",
+      "cardObfuscated" : "",
+     
+      "billingAddress": {
+        "houseNo" : "",
+        "houseName" : "",
+        "street": "",
+        "town" : "",
+        "postCode" : "",
+        "postalTown": "",
+        "county" : "",
+        "postArea" : "",
+        "postStreet" : ""
+      }
+    }
+  }
+}

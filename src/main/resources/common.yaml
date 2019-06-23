@@ -1,0 +1,25 @@
+  ResponseWrapper:
+    type: object
+    properties:
+      apiVersion:
+        type: string
+        default: "0.1"
+      errors:
+        type: array
+        items:
+          $ref: '#/ErrorInfo'
+      infos:
+        type: array
+        items:
+          $ref: '#/ErrorInfo'
+  ErrorInfo:
+    type: object
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      href:
+        type: string
+      traceId: 
+        type: string

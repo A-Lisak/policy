@@ -1,0 +1,13 @@
+{
+  "apiVersion": "2.0",
+  "errors": null,
+  "infos": null,
+  "results": [
+    {
+      "signature": {
+        "functionName": "API_OWNER.POLICY_DATA_PKG_V3.ACCEPT_MTA_FNC"
+      },
+      "payloadOut": "{\"result\":{\"acceptInitiateMtaResponseItem\":{\"policyNo\":1,\"policySequenceNo\":2,\"success\":false},\"error\":{\"errorType\":\"errorType\",\"errorCode\":\"errorCode\",\"errors\":[{\"attribute\":\"OracleGateway\",\"message\":\"policy is not accepted\"}]}}}"
+    }
+  ]
+}

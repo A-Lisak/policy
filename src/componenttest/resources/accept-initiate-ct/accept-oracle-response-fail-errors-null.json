@@ -1,0 +1,13 @@
+{
+  "apiVersion": "2.0",
+  "errors": null,
+  "infos": null,
+  "results": [
+    {
+      "signature": {
+        "functionName": "API_OWNER.POLICY_DATA_PKG_V3.ACCEPT_MTA_FNC"
+      },
+      "payloadOut": "{\"result\":{\"acceptInitiateMtaResponseItem\":{\"policyNo\":\"123\",\"policySequenceNo\":\"12345\",\"success\":false},\"error\":{\"errorType\":\"errorType\",\"errorCode\":\"errorCode\",\"errors\":null}}}"
+    }
+  ]
+}

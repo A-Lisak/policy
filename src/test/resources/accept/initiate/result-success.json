@@ -1,0 +1,8 @@
+{
+  "acceptInitiateMtaResponseItem": {
+    "policyNo": 12345,
+    "policySequenceNo": 123456,
+    "success": true
+  },
+  "error": null
+}

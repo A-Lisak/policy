@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="${project.name}">
+
+    <bannerLeft>
+        <name>${project.name}</name>
+        <href>${project.url}</href>
+    </bannerLeft>
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.6</version>
+    </skin>
+
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+            <gitHub>
+                <projectId>ku-dev/${project.artifactId}</projectId>
+                <ribbonOrientation>right</ribbonOrientation>
+                <ribbonColor>gray</ribbonColor>
+            </gitHub>
+        </fluidoSkin>
+    </custom>
+
+    <body>
+        <menu name="Overview">
+            <item name="Introduction" href="index.html"/>
+            <item name="Coverage Report" href="jacoco/index.html"/>
+            <item name="FindBug Report" href="findbugs.html"/>
+            <item name="PMD Report" href="pmd.html"/>
+            <item name="Unit Test Results" href="surefire-report.html"/>
+            <item name="Component Tests Results" href="failsafe-report.html"/>
+            <item name="BDD Scenarios" href="spock-reports/index.html"/>
+            <item name="Documentation" href="rest-docs/index.html"/>
+        </menu>
+        <menu ref="modules"/>
+        <menu ref="reports" inherit="bottom"/>
+    </body>
+</project>

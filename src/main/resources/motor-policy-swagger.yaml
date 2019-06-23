@@ -1,0 +1,1455 @@
+---
+swagger: "2.0"
+info:
+  title: "Swagger Spec For The Motor Policy REST API"
+  description: "This is the Swagger spec for the Motor Policy REST API"
+  version: "v1"
+  termsOfService: "http://localhost/terms-and-conditions"
+  contact:
+    name: "Retail API Team"
+    url: "http://www.ku.com"
+    email: "api-dev@ku.com"
+  license:
+    name: "Company Licence"
+    url: "http://www.ku.com/licenses/LICENSE-2.0.html"
+host: "localhost:9040"
+basePath: "/v1"
+tags:
+- name: "motor-policies"
+schemes:
+- "http"
+- "https"
+paths:
+  /policies/{policyNumber}:
+    get:
+      tags:
+      - "motor-policies"
+      summary: "Retrieve a Motor Policy"
+      description: "This operation retrieves a PolicyCover object from TIA for a given policy number"
+      operationId: "retrieve"
+      produces:
+      - application/json
+      parameters:
+      - name: "policyNumber"
+        in: "path"
+        description: "Policy Number"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "version"
+        in: "query"
+        description: "policy sequence number from TIA"
+        required: true
+        pattern: "^(LATEST)|(latest)|(IN-FORCE)|(in-force)|([0-9]{1,10})$"
+        default: "latest"
+        type: "string"
+      - name: "showAgreementLines"
+        in: "query"
+        description: "Show agreement/cover lines"
+        required: false
+        pattern: "^(ALL)|(all)|(ACTIVE_ONLY)|(active_only)$"
+        default: "active_only"
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/MPPolicyCoverResponse"
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not Found"
+        500:
+          description: "Failure"
+  /policies:
+    post:
+      tags:
+      - "motor-policy"
+      summary: "Initiate acceptance of Motor policy"
+      description: "Initiate acceptance of Motor policy"
+      operationId: "acceptInitiate"
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/AcceptInitiateMtaRequest'
+      responses:
+        201:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/AcceptInitiateMtaResponse'
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        500:
+          description: Failure
+  /policies/{policyNumber}/versions/{version}:
+    put:
+      tags:
+      - "motor-policy"
+      summary: "Update policy with payment details"
+      description: "Update policy with payment details"
+      operationId: "acceptComplete"
+      parameters:
+      - in: "path"
+        name: "policyNumber"
+        description: "Policy Number"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "path"
+        name: "version"
+        description: "policy sequence number from TIA"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/AcceptCompleteRequest'
+      responses:
+        201:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/AcceptCompleteResponse'
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        500:
+          description: Failure
+    delete:
+      tags:
+        - "motor-policy"
+      summary: "Cancel policy with sequence number"
+      description: "Cancel policy with sequence number"
+      operationId: "acceptCancel"
+      parameters:
+        - name: "policyNumber"
+          in: "path"
+          description: "Policy Number"
+          required: true
+          type: "integer"
+          format: "int64"
+        - name: "version"
+          in: "path"
+          description: "policy sequence number from TIA"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        201:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/AcceptCancelResponse'
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        500:
+          description: Failure
+definitions:
+  BankAccountDetail:
+    type: "object"
+    properties:
+      bankAccountDetailNo:
+        type: "integer"
+        format: "int64"
+      meansPayNo:
+        type: "integer"
+        format: "int64"
+      accountHolderName:
+        type: "string"
+      bankSortCode:
+        type: "string"
+      bankAccount:
+        type: "string"
+      ddiType:
+        type: "string"
+      receivedPddDate:
+        type: "string"
+        format: "date-time"
+      collectionDay:
+        type: "integer"
+        format: "int32"
+      sendToBacs:
+        type: "string"
+      cancelCode:
+        type: "integer"
+        format: "int32"
+  CardPaymentDetail:
+    type: "object"
+    properties:
+      cardPaymentDetailNo:
+        type: "integer"
+        format: "int64"
+      policyCoverNo:
+        type: "integer"
+        format: "int64"
+      cardType:
+        type: "string"
+      nameOnCard:
+        type: "string"
+      expiryMonth:
+        type: "integer"
+      expiryYear:
+        type: "integer"
+      kuReference:
+        type: "string"
+      pspReference:
+        type: "string"
+      authCode:
+        type: "string"
+      cardObfuscated:
+        type: "string"
+      cardIssuer:
+        type: "string"
+      pspCardType:
+        type: "string"
+      countryOfIssue:
+        type: "string"
+      accPaymentNo:
+        type: "integer"
+        format: "int64"
+      caReference:
+        type: "string"
+      isPolicyholder:
+        type: "string"
+      isCpaAgreement:
+        type: "string"
+      cardHolderHouseNo:
+        type: "string"
+      cardHolderHouseName:
+        type: "string"
+      cardHolderStreet:
+        type: "string"
+      cardHolderTown:
+        type: "string"
+      cardHolderPostalTown:
+        type: "string"
+      cardHolderCounty:
+        type: "string"
+      cardHolderPostArea:
+        type: "string"
+      cardHolderPostStreet:
+        type: "string"
+  CoverLine:
+    type: "object"
+    properties:
+      coverLineNo:
+        type: "integer"
+        format: "int64"
+      policyCoverNo:
+        type: "integer"
+        format: "int64"
+      policyNo:
+        type: "integer"
+        format: "int64"
+      policySeqNo:
+        type: "integer"
+        format: "int64"
+      agrLineNo:
+        type: "integer"
+        format: "int64"
+      agrLineSeqNo:
+        type: "integer"
+        format: "int64"
+      cancelCode:
+        type: "integer"
+        format: "int32"
+      coverKnownFromDate:
+        type: "string"
+        format: "date-time"
+      discountType:
+        type: "string"
+      productLineId:
+        type: "string"
+      productLineVerNo:
+        type: "integer"
+        format: "int32"
+      agrLineCreateCode:
+        type: "integer"
+        format: "int32"
+      cancelDate:
+        type: "string"
+        format: "date-time"
+      coverChangedDate:
+        type: "string"
+        format: "date-time"
+      coverEndDate:
+        type: "string"
+        format: "date-time"
+      coverStartDate:
+        type: "string"
+        format: "date-time"
+      discPct:
+        type: "number"
+      ncYears:
+        type: "integer"
+        format: "int32"
+      ncdYears:
+        type: "integer"
+        format: "int32"
+      pricePaid:
+        type: "number"
+      tariffPrice:
+        type: "number"
+      netPremium:
+        type: "number"
+      iptAmount:
+        type: "number"
+      nonAdjustedAnnualIpt:
+        type: "number"
+      interestAmount:
+        type: "number"
+      returnPremium:
+        type: "number"
+      returnIpt:
+        type: "number"
+      text4:
+        type: "string"
+      priceFlatPaid:
+        type: "number"
+      tariffFlat:
+        type: "number"
+      status:
+        type: "string"
+      sectionNo:
+        type: "integer"
+        format: "int32"
+      transCode:
+        type: "integer"
+        format: "int32"
+      referToUnderwriter:
+        type: "integer"
+        format: "int32"
+      proRataFactor:
+        type: "number"
+      transactionCost:
+        type: "number"
+      productTax1:
+        type: "number"
+      productTax2:
+        type: "number"
+      currencyCode:
+        type: "string"
+      centerCode:
+        type: "string"
+      shortDesc:
+        type: "string"
+      temporaryInsurance:
+        type: "string"
+      floorsCeilingInd:
+        type: "string"
+      highestRatedDriverType:
+        type: "string"
+      highestRatedDriverNo:
+        type: "string"
+      discountAmount:
+        type: "string"
+      riskPremium:
+        type: "number"
+      ratePremium:
+        type: "number"
+      conversionEstimate:
+        type: "number"
+      floorCeilingProposedChange:
+        type: "number"
+      floorCeilingCappedChange:
+        type: "number"
+      depositAmt:
+        type: "number"
+      premRateCode:
+        type: "string"
+      comBatchNo:
+        type: "integer"
+        format: "int64"
+      renewalDiscountRate:
+        type: "number"
+      renewalDiscountIpt:
+        type: "number"
+      ratesetId:
+        type: "integer"
+        format: "int64"
+      priceLevel:
+        type: "string"
+      addonYear:
+        type: "integer"
+        format: "int32"
+      freeAddon:
+        type: "string"
+      overrideRatesetId:
+        type: "integer"
+        format: "int64"
+      multiway:
+        type: "integer"
+        format: "int32"
+      loyaltyCode:
+        type: "integer"
+        format: "int32"
+      postcodeSegment:
+        type: "integer"
+        format: "int32"
+      genFactorCount:
+        type: "integer"
+        format: "int32"
+      genFactorKeyCount:
+        type: "integer"
+        format: "int32"
+      protectedNcd:
+        type: "number"
+      protectedNcdCredit:
+        type: "number"
+      adminFeeIpt:
+        type: "number"
+      firstQuoteDate:
+        type: "string"
+        format: "date-time"
+      originalPreferredPaymentMethodCode:
+        type: "string"
+      hasPreferredPayMethodAlter:
+        type: "string"
+      firstQuoteHour:
+        type: "integer"
+        format: "int32"
+      lastQuoteHour:
+        type: "integer"
+        format: "int32"
+      familyUnit:
+        type: "string"
+      frontingScore:
+        type: "integer"
+        format: "int32"
+      policyReinstated:
+        type: "string"
+      sucSeqNo:
+        type: "integer"
+        format: "int64"
+      tempCoverFrom:
+        type: "string"
+        format: "date-time"
+      tempCoverTo:
+        type: "string"
+        format: "date-time"
+      previousChannel:
+        type: "string"
+      radarKeyName:
+        type: "string"
+      radarChampionChallenger:
+        type: "string"
+      radarPriceTestLevel:
+        type: "integer"
+        format: "int32"
+      nbOptimisationReference:
+        type: "string"
+      delphiReference:
+        type: "string"
+      coveredVehicle:
+        $ref: "#/definitions/CoveredVehicle"
+      coveredDrivers:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoveredDriver"
+      coverLineRiskSplits:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoverLineRiskSplit"
+      coverLinePremiumAdjustments:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoverLinePremiumAdjustment"
+      coverLineSiraValues:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoverLineSiraValue"
+      coverLineGenericFactors:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoverLineGenericFactor"
+      coverLineRuleVersions:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoverLineRuleVersion"
+  CoverLineGenericFactor:
+    type: "object"
+    properties:
+      factorId:
+        type: "string"
+      factorKey1:
+        type: "string"
+      factorKey2:
+        type: "string"
+      factorKey3:
+        type: "string"
+  CoverLinePremiumAdjustment:
+    type: "object"
+    properties:
+      coverLinePremiumAdjNo:
+        type: "integer"
+        format: "int64"
+      transactionGroupingId:
+        type: "integer"
+        format: "int64"
+      amt:
+        type: "number"
+      requestStatus:
+        type: "string"
+      transCode:
+        type: "integer"
+        format: "int32"
+      stampDuty:
+        type: "number"
+      transactionCost:
+        type: "number"
+      productTax1:
+        type: "number"
+      productTax2:
+        type: "number"
+      proRataAmt:
+        type: "number"
+      commissionEntitledAmt:
+        type: "number"
+      currencyCode:
+        type: "string"
+      localAmt:
+        type: "number"
+      netPremium:
+        type: "number"
+      iptAmount:
+        type: "number"
+      interestAmount:
+        type: "number"
+      nonAdjustedProRatedIpt:
+        type: "number"
+  CoverLineRiskSplit:
+    type: "object"
+    properties:
+      coverLineRiskSplitNo:
+        type: "integer"
+        format: "int64"
+      riskNo:
+        type: "integer"
+        format: "int32"
+      factor:
+        type: "number"
+  CoverLineRuleVersion:
+    type: "object"
+    properties:
+      ruleAppName:
+        type: "string"
+      ruleAppVersion:
+        type: "string"
+      variantMarker:
+        type: "string"
+  CoverLineSiraValue:
+    type: "object"
+    properties:
+      coverLineSiraValueNo:
+        type: "integer"
+        format: "int64"
+      createdBy:
+        type: "string"
+      createdDate:
+        type: "string"
+        format: "date-time"
+      modifiedBy:
+        type: "string"
+      modifiedDate:
+        type: "string"
+        format: "date-time"
+      siraCode:
+        type: "string"
+      siraValue:
+        type: "string"
+  CoveredDriver:
+    type: "object"
+    properties:
+      coveredDriverNo:
+        type: "integer"
+        format: "int64"
+      driverType:
+        type: "string"
+      driverObjectNo:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      forename:
+        type: "string"
+      surname:
+        type: "string"
+      fullName:
+        type: "string"
+      gender:
+        type: "string"
+      maritalStatus:
+        type: "integer"
+        format: "int32"
+      relationToPolicyholder:
+        type: "string"
+      dateOfBirth:
+        type: "string"
+        format: "date-time"
+      occupation:
+        type: "string"
+      licenceType:
+        type: "string"
+      licenceRestriction:
+        type: "string"
+      yearsLicenceHeld:
+        type: "string"
+        format: "date-time"
+      yearsInUk:
+        type: "string"
+        format: "date-time"
+      driveOtherCarsInd:
+        type: "string"
+      driverSpecificXs:
+        type: "number"
+      occupationSegment:
+        type: "integer"
+        format: "int32"
+      youngestDriver:
+        type: "string"
+      policyholderDriver:
+        type: "string"
+      driverScore:
+        type: "number"
+      ncdLevel:
+        type: "number"
+      coverType:
+        type: "string"
+      previousCoverType:
+        type: "string"
+      coverTypeDescription:
+        type: "string"
+      streetNo:
+        type: "string"
+      street:
+        type: "string"
+      postalTown:
+        type: "string"
+      city:
+        type: "string"
+      county:
+        type: "string"
+      postcodeIn:
+        type: "string"
+      postcodeOut:
+        type: "string"
+      classOfUse:
+        type: "string"
+      classOfUseLongDescription:
+        type: "string"
+      classOfUseShortDescription:
+        type: "string"
+      classOfUseScheduleDescription:
+        type: "string"
+      drivingRestrictions:
+        type: "string"
+      ncdDiscount:
+        type: "number"
+      ncdProtection:
+        type: "string"
+      staffIndicator:
+        type: "string"
+      introductoryNcd:
+        type: "string"
+      proofOfNcd:
+        type: "string"
+      carOwner:
+        type: "string"
+      registeredKeeper:
+        type: "string"
+      proposerDriverInd:
+        type: "string"
+      numberOfCars:
+        type: "integer"
+        format: "int32"
+      introNcdYears:
+        type: "number"
+      introNcdPct:
+        type: "number"
+      ibisQuoteChannel:
+        type: "string"
+      ibisSchemeCode:
+        type: "string"
+      loadDiscReason:
+        type: "string"
+      marketPlus:
+        type: "string"
+      ladyDriver:
+        type: "string"
+      handbagCover:
+        type: "string"
+      voluntaryExcess:
+        type: "number"
+      useOfOtherCars:
+        type: "integer"
+        format: "int32"
+      carsInHousehold:
+        type: "integer"
+        format: "int32"
+      noOfChildren:
+        type: "integer"
+        format: "int32"
+      residentialStatus:
+        type: "integer"
+        format: "int32"
+      compulsoryExcess:
+        type: "number"
+      fireExcess:
+        type: "number"
+      theftExcess:
+        type: "number"
+      windscreenExcess:
+        type: "number"
+      applicableExcess:
+        type: "number"
+      appXsDateTime:
+        type: "string"
+        format: "date-time"
+      uwLoad:
+        type: "number"
+      uwLoadEffectiveDate:
+        type: "string"
+        format: "date-time"
+      uwAdExcess:
+        type: "number"
+      iceEquipment:
+        type: "string"
+      previousInsuranceName:
+        type: "string"
+      personalAccident:
+        type: "string"
+      personalEffects:
+        type: "string"
+      previousInsuranceExpiry:
+        type: "string"
+        format: "date-time"
+      medicalExpenses:
+        type: "string"
+      previousInsurancePolNo:
+        type: "string"
+      previousInsuranceNcd:
+        type: "number"
+      drivingOtherVehExp:
+        type: "string"
+      drivingOtherVehExpYrs:
+        type: "string"
+      employmentStatus:
+        type: "string"
+      industryCode:
+        type: "string"
+      secondaryOccupationYn:
+        type: "string"
+      secondaryOccupation:
+        type: "string"
+      driverClaims:
+        type: "array"
+        items:
+          $ref: "#/definitions/DriverClaim"
+      driverConvictions:
+        type: "array"
+        items:
+          $ref: "#/definitions/DriverConviction"
+      driverMedicalRestrictions:
+        type: "array"
+        items:
+          $ref: "#/definitions/DriverMedicalRestriction"
+      clientBarredStatus:
+        type: "string"
+  CoveredVehicle:
+    type: "object"
+    properties:
+      coveredVehicleNo:
+        type: "integer"
+        format: "int64"
+      vehicleType:
+        type: "string"
+      vehicleObjectNo:
+        type: "integer"
+        format: "int64"
+      vehicleRegNo:
+        type: "string"
+      vehicleDetailId:
+        type: "integer"
+        format: "int64"
+      mileage:
+        type: "integer"
+        format: "int64"
+      mileageDescription:
+        type: "string"
+      overnightLocation:
+        type: "string"
+      daytimeLocation:
+        type: "string"
+      securityDevice:
+        type: "string"
+      riskPostcodeIn:
+        type: "string"
+      riskPostcodeOut:
+        type: "string"
+      carValue:
+        type: "number"
+      carValueDescription:
+        type: "string"
+      carValueType:
+        type: "string"
+      dateOfPurchase:
+        type: "string"
+        format: "date-time"
+      dateOfRegistration:
+        type: "string"
+        format: "date-time"
+      carGroup:
+        type: "string"
+      carColour:
+        type: "string"
+      carSpecificAdXs:
+        type: "number"
+      carSpecificTheftXs:
+        type: "number"
+      colourSegment:
+        type: "integer"
+        format: "int32"
+      trackerYn:
+        type: "string"
+      trackerEndorsementClause:
+        type: "string"
+      carType:
+        type: "string"
+      abiCode:
+        type: "string"
+      vehicleMake:
+        type: "string"
+      vehicleModel:
+        type: "string"
+      modifications:
+        type: "array"
+        items:
+          $ref: "#/definitions/Modification"
+      fuelTypeCode:
+        type: "string"
+      fuelTypeDescription:
+        type: "string"
+      vehicleEngineSize:
+        type: "integer"
+        format: "int32"
+      windscreenReplacementExcess:
+        type: "number"
+        description: "Windscreen replacement excess."
+        minimum: 0
+        example: 100
+      windscreenRepairExcess:
+        type: "number"
+        description: "Windscreen repair excess."
+        minimum: 0
+        example: 0
+  Modification:
+    type: "object"
+    properties:
+      modificationNo:
+        type: "integer"
+        format: "int32"
+      code:
+        type: "string"
+      description:
+        type: "string"
+  DriverClaim:
+    type: "object"
+    properties:
+      driverClaimNo:
+        type: "integer"
+        format: "int64"
+      prevCurrClaimInd:
+        type: "string"
+      claimSeqNo:
+        type: "integer"
+        format: "int64"
+      claimDate:
+        type: "string"
+        format: "date-time"
+      claimCause:
+        type: "string"
+      claimEvent:
+        type: "string"
+      claimDescription:
+        type: "string"
+      atFaultInd:
+        type: "string"
+      atFaultFcInd:
+        type: "string"
+      outstandingInd:
+        type: "string"
+      claimAmount:
+        type: "number"
+      ncdDisallowedInd:
+        type: "string"
+  DriverConviction:
+    type: "object"
+    properties:
+      driverConvictionNo:
+        type: "integer"
+        format: "int64"
+      driverConvictionSeqNo:
+        type: "integer"
+        format: "int64"
+      convictionCode:
+        type: "string"
+      penaltyPoints:
+        type: "integer"
+        format: "int32"
+      dateOfConviction:
+        type: "string"
+        format: "date-time"
+      licenseSuspensionInd:
+        type: "string"
+      suspensionPeriod:
+        type: "integer"
+        format: "int32"
+      pendingActualInd:
+        type: "string"
+  DriverMedicalRestriction:
+    type: "object"
+    properties:
+      driverMedicalRestrictionNo:
+        type: "integer"
+        format: "int64"
+      medicalRestrictionSeqNo:
+        type: "integer"
+        format: "int64"
+      medicalCondition:
+        type: "string"
+      medicalConditionDesc:
+        type: "string"
+  PolicyCover:
+    type: "object"
+    properties:
+      policyCoverNo:
+        type: "integer"
+        format: "int64"
+      policyholderNo:
+        type: "integer"
+        format: "int64"
+      policyNo:
+        type: "integer"
+        format: "int64"
+      parentPolicyCoverNo:
+        type: "integer"
+        format: "int64"
+      policySeqNo:
+        type: "integer"
+        format: "int64"
+      cancelCode:
+        type: "integer"
+        format: "int32"
+      expiryCode:
+        type: "integer"
+        format: "int32"
+      paymentFrequency:
+        type: "integer"
+        format: "int32"
+      policyStatus:
+        type: "string"
+      cancelDate:
+        type: "string"
+        format: "date-time"
+      coverChangedDate:
+        type: "string"
+        format: "date-time"
+      coverEndDate:
+        type: "string"
+        format: "date-time"
+      coverKnownFromDate:
+        type: "string"
+        format: "date-time"
+      coverStartDate:
+        type: "string"
+        format: "date-time"
+      yearStartDate:
+        type: "string"
+        format: "date-time"
+        description: "Year start date (no time element)."
+        example: "2017-08-09T00:00:00Z"
+      renewalDate:
+        type: "string"
+        format: "date-time"
+      currentPolicyYearStart:
+        type: "string"
+        format: "date-time"
+        description: "Current Year policy start date (no time element)."
+        example: "2017-08-09T00:00:00Z"
+      currentPolicyYearEnd:
+        type: "string"
+        format: "date-time"
+        description: "Current Year policy end date (no time element)."
+        example: "2017-08-09T00:00:00Z"
+      text1:
+        type: "string"
+      text2:
+        type: "string"
+      text4:
+        type: "string"
+      ageCalcDate:
+        type: "string"
+        format: "date-time"
+      responseType:
+        type: "integer"
+        format: "int32"
+      meansPayNo:
+        type: "integer"
+        format: "int64"
+      instlPlanType:
+        type: "string"
+      policyYear:
+        type: "integer"
+        format: "int32"
+      firstStartDate:
+        type: "string"
+        format: "date-time"
+      referToUnderwriter:
+        type: "integer"
+        format: "int32"
+      markNo:
+        type: "integer"
+        format: "int64"
+      quoteExpiryDate:
+        type: "string"
+        format: "date-time"
+      transactionType:
+        type: "string"
+      installmentMethod:
+        type: "integer"
+        format: "int32"
+      accountNo:
+        type: "integer"
+        format: "int64"
+      paymentMethod:
+        type: "string"
+      centerCode:
+        type: "string"
+      mtaAdjustmentReason:
+        type: "string"
+      webReferenceNo:
+        type: "string"
+      sourceClonePolicyNo:
+        type: "string"
+      homeCrossSellIqFlag:
+        type: "string"
+      memberGetMemberToken:
+        type: "string"
+      coverStartTime:
+        type: "string"
+      yearStartTime:
+        type: "string"
+      coverEndTime:
+        type: "string"
+      depositPayMethod:
+        type: "string"
+      depMeansPayNo:
+        type: "integer"
+        format: "int64"
+      kuCampaignCode:
+        type: "string"
+      kuSchemeCode:
+        type: "string"
+      ncdFlag:
+        type: "string"
+      ddiFlag:
+        type: "string"
+      polFlag:
+        type: "string"
+      ncdRcvdDate:
+        type: "string"
+        format: "date-time"
+      ddiRcvdDate:
+        type: "string"
+        format: "date-time"
+      polRcvdDate:
+        type: "string"
+        format: "date-time"
+      prevInsurer:
+        type: "string"
+      ncdRate:
+        type: "string"
+      ncdBonus:
+        type: "string"
+      certStatus:
+        type: "string"
+      certDate:
+        type: "string"
+        format: "date-time"
+      verbalNcd:
+        type: "string"
+      amnestyFlag:
+        type: "string"
+      amnestyDate:
+        type: "string"
+        format: "date-time"
+      deferredReview:
+        type: "integer"
+        format: "int64"
+      ncdUserId:
+        type: "string"
+      ddiUserId:
+        type: "string"
+      polUserId:
+        type: "string"
+      certUserId:
+        type: "string"
+      ncdUserName:
+        type: "string"
+      ddiUserName:
+        type: "string"
+      polUserame:
+        type: "string"
+      certUserName:
+        type: "string"
+      interimReferralRuleset:
+        type: "string"
+      underwriterId:
+        type: "string"
+      esPriceTestLevel:
+        type: "integer"
+        format: "int32"
+      faPriceTestLevel:
+        type: "integer"
+        format: "int32"
+      callCentreOffer:
+        type: "string"
+      cpaOptout:
+        type: "string"
+      cpaOptoutUser:
+        type: "string"
+      cpaOptoutTimestamp:
+        type: "string"
+        format: "date-time"
+      cpaOptoutReason:
+        type: "string"
+      preferredPayMethod:
+        type: "integer"
+        format: "int32"
+      responseCode:
+        type: "string"
+      unbatchNcdDate:
+        type: "string"
+        format: "date-time"
+      unbatchUserId:
+        type: "string"
+      unbatchUserName:
+        type: "string"
+      renewalAcceptedInd:
+        type: "string"
+      multiPolicyGroupId:
+        type: "integer"
+        format: "int64"
+      aggregatorId:
+        type: "string"
+      liveStartDate:
+        type: "string"
+        format: "date-time"
+      liveRenewalDate:
+        type: "string"
+        format: "date-time"
+      poFactor:
+        type: "number"
+      nextPaymentNo:
+        type: "number"
+      additionalOrReturnPremiumAmount:
+        type: "number"
+      bankAccountDetail:
+        $ref: "#/definitions/BankAccountDetail"
+      cardPaymentDetail:
+        $ref: "#/definitions/CardPaymentDetail"
+      coverLines:
+        type: "array"
+        items:
+          $ref: "#/definitions/CoverLine"
+      policyholder:
+        $ref: "#/definitions/Policyholder"
+      annualPremium:
+        type: "number"
+        description: "The annual premium for all cover lines, with IPT and interest"
+        example: "1234.55"
+      tiaTransId:
+        type: "integer"
+        format: "int64"
+  MPPolicyCoverResponse:
+    type: "object"
+    allOf:
+    - $ref: './common.yaml#/ResponseWrapper'
+    - properties:
+        results:
+          type: "array"
+          items:
+            $ref: "#/definitions/PolicyCoverResponse"
+  PolicyCoverResponse:
+    type: "object"
+    properties:
+      motor-policy:
+        $ref: "#/definitions/PolicyCover"
+  Policyholder:
+    type: "object"
+    properties:
+      policyholderNo:
+        type: "integer"
+        format: "int64"
+      nameId:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      forename:
+        type: "string"
+      surname:
+        type: "string"
+      streetNo:
+        type: "string"
+      houseName:
+        type: "string"
+      street:
+        type: "string"
+      postalTown:
+        type: "string"
+      city:
+        type: "string"
+      county:
+        type: "string"
+      country:
+        type: "string"
+      postArea:
+        type: "string"
+      postStreet:
+        type: "string"
+      birthDate:
+        type: "string"
+        format: "date-time"
+      occupationCode:
+        type: "string"
+      occupation:
+        type: "string"
+      sex:
+        type: "string"
+      maritalState:
+        type: "integer"
+        format: "int32"
+      contactOptInIndicator:
+        type: "string"
+      preferredContactMethod:
+        type: "integer"
+        format: "int32"
+      eveningTelNo:
+        type: "string"
+      daytimeTelNo:
+        type: "string"
+      mobileTelNo:
+        type: "string"
+      faxNo:
+        type: "string"
+      email:
+        type: "string"
+  AcceptInitiateMtaRequest:
+    type: "object"
+    properties:
+      mtaTransactionTypes:
+        type: array
+        items:
+          type: string
+        description: A list of MTA transaction types
+      policyCover:
+        $ref: "#/definitions/PolicyCover"
+  AcceptInitiateMtaResponse:
+    type: object
+    allOf:
+      - $ref: './common.yaml#/ResponseWrapper'
+      - properties:
+          results:
+            type: array
+            items:
+              $ref: '#/definitions/AcceptInitiateMtaResponseItem'
+  AcceptInitiateMtaResponseItem:
+    type: object
+    properties:
+      policyNo:
+        type: "integer"
+        format: "int64"
+      policySequenceNo:
+        type: "integer"
+        format: "int64"
+      success:
+        type: boolean
+  RevisedPaymentPlan:
+    type: object
+    properties:
+      totalRemainingAmount:
+        type: number
+        description: total amount of remaining instalments, in pounds & pence
+        example: 110.00
+      totalAdditionalInterest:
+        type: number
+        description: total cost of the financing of the additional premium instalments, in pounds & pence
+        example: 100
+      remainingNoOfInstalments:
+        type: integer
+        description: number of remaining instalments to be collected
+        example: 4
+      revisedInstalmentAmount:
+        type: number
+        description: the revised amount payable per instalment (including interest and fee) in pounds & pence
+        example: 10.00
+      interestRatePercentage:
+        type: number
+        description: the interest rate % applied
+        example: 12.5
+      revisedFirstDate:
+        type: string
+        format: date
+        description: the date of the first instalment that has been revised by the MTA
+        example: "2018-10-03"
+      nextInstalmentDue:
+        type: string
+        format: date
+        description: the date the next instalment is due, regardless to whether the instalment amount has been revised or not
+      instalments:
+        type: array
+        items:
+          $ref: '#/definitions/RevisedInstalment'
+  RevisedInstalment:
+    type: object
+    properties:
+      instalmentCollected:
+        type: boolean
+        description: indicator to show whether the instalment has been collected or not
+        example: true
+      revisedInstalment:
+        type: boolean
+        description: indicator whether it has been updated by MTA
+      collectionDate:
+        type: string
+        format: date
+        description: the date the instalment is / was due to be collected
+        example: "2018-04-01"
+      collectionAmount:
+        type: number
+        description: the amount of the instalment in pounds & pence
+        example: 2.50
+      coverLines:
+        type: array
+        items:
+          $ref: '#/definitions/InstalmentCoverLine'
+  InstalmentCoverLine:
+    type: object
+    required:
+      - productCode
+      - amount
+    properties:
+      productLineId:
+        type: "string"
+        description: "The product the coverLine is for"
+        example: EMMOT
+      amount:
+        type: number
+        description: the total amount of coverLine including IPT where applicable, the value is in pounds & pence
+        example: 2.50
+  BillingAddress:
+    type: object
+    properties:
+      houseNo:
+        type: string
+      houseName:
+        type: string
+      street:
+        type: string
+      town:
+        type: string
+      postCode:
+        type: string
+      postalTown:
+        type: string
+      county:
+        type: string
+      postArea:
+        type: string
+        description: First half of the PostCode
+      postStreet:
+        type: string
+        description: Second half of the PostCode
+  CardPayment:
+    type: object
+    properties:
+      isPolicyHolderCard:
+        type: boolean
+        description: Flag to indicate whether it is policy holders card or not
+      meansPayNo:
+        type: string
+      accountHolderName:
+        type: string
+      ccNo:
+        type: string
+        description: This is 10 digits Card number
+      expiryMonth:
+        type: string
+      expiryYear:
+        type: string
+      pspCardType:
+        type: string
+      issuingBank:
+        type: string
+      countryOfIssue:
+        type: string
+      caReference:
+        type: string
+      pspReference:
+        type: string
+      authCode:
+        type: string
+      cardObfuscated:
+        type: string
+      billingAddress:
+        $ref: "#/definitions/BillingAddress"
+
+  AcceptCompleteRequest:
+    type: "object"
+    properties:
+      paymentDetails:
+       $ref: "#/definitions/PaymentDetails"
+    required:
+    - paymentDetails
+
+  AcceptCompleteResponse:
+    type: object
+    allOf:
+      - $ref: './common.yaml#/ResponseWrapper'
+      - properties:
+          results:
+            type: array
+            items:
+              type: string
+
+  PaymentDetails:
+    type: object
+    properties:
+      paymentMethod:
+        type: string
+      status:
+        type: string
+      revisedPaymentPlan:
+        $ref: "#/definitions/RevisedPaymentPlan"
+      cardPayment:
+        $ref: "#/definitions/CardPayment"
+
+  AcceptCancelResponse:
+    type: object
+    allOf:
+      - $ref: './common.yaml#/ResponseWrapper'
+      - properties:
+          results:
+            type: array
+            items:
+              type: string

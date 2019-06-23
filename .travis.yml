@@ -1,0 +1,65 @@
+# Sudo is required to run Docker
+sudo: required
+
+# Let Travis know this is a Java project.
+# Travis will run the maven commands to retrieve dependencies and build your artefact.
+language: java
+
+# Build with Open JDK 8 to ensure consistency with Docker image
+jdk:
+  - openjdk8
+
+# We need Docker to build our Docker image
+services:
+    - docker
+
+# Environment variables
+env:
+  - DEV_ENVIRONMENT="deve" TEST_ENVIRONMENT="tste"
+
+# Set up a cache for Maven dependencies.
+# Should speed up builds.
+cache:
+  directories:
+    - $HOME/.m2/repository
+
+before_install:
+  # Checkout travis build scripts
+  - git clone git@github.com:ku-dev/deployment-scripts.git ext-repo && rm -rf ./ext-repo/.git && rm ./ext-repo/README.md && cp -ar ./ext-repo/* .
+  # Run before install scripts
+  - . ./scripts/before_install.sh
+  # Run copy maven settings scripts
+  - . ./scripts/copy_mvnsettings.sh $TRAVIS_BRANCH
+
+install:
+  # Run install scripts
+  - . ./scripts/install.sh
+
+after_success:
+  - . ./scripts/docker_build.sh
+
+deploy:
+  # Deploy docker
+  - provider:     script
+    script:       . ./scripts/docker_deploy.sh
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^development[\s]*|master|v[0-999].[0-999].[0-999]$
+  # Deploy on beanstalk app
+  - provider:     script
+    script:       . ./scripts/eb_deploy.sh
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^development[\s]*|master|v[0-999].[0-999].[0-999]$
+  # Deploy maven reports
+  - provider:     script
+    script:       . ./scripts/reports_deploy.sh
+    skip_cleanup: true
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH =~ ^development[\s]*|master|v[0-999].[0-999].[0-999]$
+
+notifications:
+  slack: kugroup:EBFYFWOREYOKpokuZb4uWxNa

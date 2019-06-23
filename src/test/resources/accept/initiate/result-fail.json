@@ -1,0 +1,17 @@
+{
+  "acceptInitiateMtaResponseItem": {
+    "policyNo": 1,
+    "policySequenceNo": 2,
+    "success": false
+  },
+  "error": {
+    "errorType": "errorType",
+    "errorCode": "errorCode",
+    "errors": [
+      {
+        "attribute": "OracleGateway",
+        "message": "policy is not accepted"
+      }
+    ]
+  }
+}

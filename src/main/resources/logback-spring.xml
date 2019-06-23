@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Context -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <springProperty name="LOG_LEVEL" source="logging.level.root"/>
+    <!-- Appender -->
+    <appender name="APPLICATION" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-16thread] %-5level [%X{X-B3-TraceId} / %X{X-B3-SpanId}]  %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="REQUEST" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/request.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_PATH}/request_%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 10 days' worth of history -->
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%X{X-B3-TraceId} / %X{X-B3-SpanId}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="ASYNC-APP" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>500</queueSize>
+        <appender-ref ref="APPLICATION"/>
+    </appender>
+    <appender name="ASYNC-REQUEST" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>1000</queueSize>
+        <appender-ref ref="REQUEST"/>
+    </appender>
+    <!-- loggers -->
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="ASYNC-APP"/>
+    </root>
+    <logger name="request-response" level="DEBUG" additivity="false">
+        <appender-ref ref="ASYNC-REQUEST"/>
+    </logger>
+</configuration>

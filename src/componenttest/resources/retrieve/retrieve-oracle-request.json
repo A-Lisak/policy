@@ -1,0 +1,6 @@
+{
+  "signature": {
+    "functionName": "API_OWNER.POLICY_DATA_PKG_V3.CREATE_DATA_MODEL_FNC"
+  },
+  "payloadIn": "{\"policyNo\":1001004,\"version\":\"IN-FORCE\"}"
+}
